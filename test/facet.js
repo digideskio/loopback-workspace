@@ -8,6 +8,7 @@ var Facet = require('../').models.Facet;
 
 describe('Facet', function() {
   describe('Facet.create(def, cb)', function() {
+    before(resetWorkspace);
     beforeEach(givenBasicWorkspace);
 
     it('should use name as the id', function(done) {
