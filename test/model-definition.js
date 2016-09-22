@@ -13,6 +13,7 @@ var ModelRelation = app.models.ModelRelation;
 var TestDataBuilder = require('./helpers/test-data-builder');
 var ref = TestDataBuilder.ref;
 var ConfigFile = app.models.ConfigFile;
+var nodePath = require('path');
 
 describe('ModelDefinition', function() {
   describe('CRUD', function() {
@@ -125,8 +126,9 @@ describe('ModelDefinition', function() {
       expect(path).to.equal(configFilePath);
     });
     it('should return construct configFile path', function() {
+      var modelPath = 'models/my-model.json';
       var path = ModelDefinition.getPath('.', { name: 'MyModel' });
-      expect(path).to.equal('models/my-model.json');
+      expect(path).to.equal(nodePath.normalize(modelPath));
     });
   });
 
